@@ -47,9 +47,13 @@ const Dashboard = () => {
                 {answers.map((answer, index) => (
                     <TableRow key={answer._id + index}>
                         <TableCell>{index}</TableCell>
-                        <TableCell>{question ? question.question : 'No question found'}</TableCell>
+                        <TableCell>{question ? question.question  : 'No question found'}</TableCell>
                         <TableCell>{typeof answer.answer === 'object' ? JSON.stringify(answer.answer) : answer.answer}</TableCell>
-                        <TableCell>{answer.input}</TableCell>
+                        <TableCell>{answer && answer.input 
+                                        ? answer.input.length > 7 
+                                            ? `${answer.input.slice(0, 7)}...` 
+                                            : answer.input
+                                        : ''}</TableCell>
                         <TableCell>{new Date(answer.date).toLocaleString()}</TableCell>
                     </TableRow>
                 ))}

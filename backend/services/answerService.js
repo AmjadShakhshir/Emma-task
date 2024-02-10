@@ -1,7 +1,9 @@
 import AnswerRepo from '../models/answerModel.js';
 
 const findAll = async () => {
-    const answers = await AnswerRepo.find().exec();
+    const answers = await AnswerRepo.find()
+    .exec();
+
     return answers;
 }
 
